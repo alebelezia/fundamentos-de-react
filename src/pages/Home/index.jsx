@@ -6,10 +6,11 @@ import './styles.css'
 import {Card} from '../../components/Card'
 
 export function Home() {
+    //const [onde guardamos o conteúdo do estado, função que atualiza o estado]
   const [count, setCount] = useState(0)
   const [studentName, setStudentName] = useState("") 
-  //const [onde guardamos o conteúdo do estado, função que atualiza o estado]
   const [students, setStudents] = useState([]);
+  const [user, setUser] = useState({ name: "", avatar: "" });
 
   function handleAddStudent() {
     const newStudent = {
@@ -27,6 +28,16 @@ export function Home() {
   useEffect(() => {
     //Corpo do useEffect
     console.log("useEffect foi chamado!")
+
+    fetch("https://api.github.com/users/alebelezia")
+      .then((response) => response.json())
+      .then((data) => {
+        setUser({
+          name: data.name,
+          avatar: data.avatar_url,
+        });
+    });
+
   }, [students]);
   //Os arrays definem quais são os estados que o useEffect depende.
   //Se o array estiver vazio, o useEffect é executado apenas uma vez (na renderização da página). Se o array estiver com estados, ele será executado na renderização da página e em toda vez que houver mudanças nos estados (no caso, quando houver alteração no estado de 'students')
@@ -36,8 +47,8 @@ export function Home() {
       <header>
         <h1>Lista de Presença</h1>
         <div>
-          <strong>Alessandra</strong>
-          <img src="https://github.com/alebelezia.png" alt="Foto de perfil" />
+        <strong>{user.name}</strong>
+        <img src={user.avatar} alt="Foto de perfil" />
         </div>
       </header>
 
