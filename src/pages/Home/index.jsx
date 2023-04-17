@@ -25,7 +25,14 @@ export function Home() {
 
   return (
     <div className='container'>
-      <h1>Nome: {studentName}</h1>
+      <header>
+        <h1>Lista de Presença</h1>
+        <div>
+          <strong>Alessandra</strong>
+          <img src="https://github.com/alebelezia.png" alt="Foto de perfil" />
+        </div>
+      </header>
+
       <input
         type="text"
         placeholder="Digite o nome..."
