@@ -1,6 +1,6 @@
 //Hooks: São funções que permitem conectar os recursos de estados e ciclos de vida do React a partir de componentes funcionais. Normalmente os Hooks iniciam com a palavra use por convenção. Exemplos de hooks: useState, useEffect.
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './styles.css'
 
 import {Card} from '../../components/Card'
@@ -22,6 +22,14 @@ export function Home() {
     }
     setStudents((prevState) => [...prevState, newStudent]);
   }
+
+  //Hook useEffect é executado automaticamente assim que a interface for renderizada
+  useEffect(() => {
+    //Corpo do useEffect
+    console.log("useEffect foi chamado!")
+  }, [students]);
+  //Os arrays definem quais são os estados que o useEffect depende.
+  //Se o array estiver vazio, o useEffect é executado apenas uma vez (na renderização da página). Se o array estiver com estados, ele será executado na renderização da página e em toda vez que houver mudanças nos estados (no caso, quando houver alteração no estado de 'students')
 
   return (
     <div className='container'>
