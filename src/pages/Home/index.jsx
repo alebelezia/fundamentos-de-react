@@ -12,9 +12,9 @@ export function Home() {
       <input type="text" />
       <button>OK</button>
 
-      <Card />
-      <Card />
-      <Card />
+      <Card name="Alessandra" time="10:55:25" />
+      <Card name="João" time="11:00:10" />
+      <Card name="Ana" time="12:10:33" />
     </div>
   )
 }
